@@ -18,6 +18,16 @@ public class GameScreen extends JFrame {
 		screen.setSize(800,600);
 		screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		Game game = new Game();
+		
+		game.requestFocus();
+		game.addKeyListener(game);
+		game.setFocusable(true);
+		game.setFocusTraversalKeysEnabled(false);
+		
+		screen.add(game);
+		screen.setVisible(true);
+		
 		
 	}
 
