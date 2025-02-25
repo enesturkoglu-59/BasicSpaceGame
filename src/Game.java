@@ -10,9 +10,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 class Fire{
 	
@@ -46,6 +48,9 @@ class Fire{
 
 public class Game extends JPanel implements KeyListener,ActionListener {
 	
+	Timer timer = new Timer(5,this);
+	
+	
 	private int elapsedTime = 0;
 	
 	private int spentBullet = 0;
@@ -58,7 +63,7 @@ public class Game extends JPanel implements KeyListener,ActionListener {
 	
 	private int targetX = 0;
 	
-	private int targerDirectionX = 2;
+	private int targetDirectionX = 4;
 	
 	private int spaceshipX = 0;
 	
@@ -76,6 +81,8 @@ public class Game extends JPanel implements KeyListener,ActionListener {
 		}
 		
 		setBackground(Color.BLACK);
+		
+		timer.start();
 	}
 	
 	
@@ -119,7 +126,18 @@ public class Game extends JPanel implements KeyListener,ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("Timer Tetiklendi: " + elapsedTime);
+		targetX+=targetDirectionX;
 		
+		if(targetX>=750) {
+			targetDirectionX = -targetDirectionX;
+		}
+		
+		if(targetX<=0) {
+			targetDirectionX = -targetDirectionX;
+		}
+		
+		repaint();
 		
 	}
 	
