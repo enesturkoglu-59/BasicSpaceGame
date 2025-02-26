@@ -115,6 +115,34 @@ public class Game extends JPanel implements KeyListener,ActionListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
+		int c = e.getKeyCode();
+		
+		if(c==KeyEvent.VK_LEFT) {
+			
+			if(spaceshipX<=0) {
+				
+				spaceshipX = 0;
+				
+				
+			}
+			else {
+				
+				spaceshipX-=spaceshipDirectionX;
+			}
+		}
+		
+		if(c==KeyEvent.VK_RIGHT) {
+			
+			if(spaceshipX>=700) {
+				
+				spaceshipX = 700;
+			}
+			else {
+				
+				spaceshipX+=spaceshipDirectionX;
+			}
+		}
+		
 		
 	}
 
@@ -126,7 +154,7 @@ public class Game extends JPanel implements KeyListener,ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Timer Tetiklendi: " + elapsedTime);
+		
 		targetX+=targetDirectionX;
 		
 		if(targetX>=750) {
